@@ -7,12 +7,11 @@ import AdminNavbar from "components/Navbars/AdminNavbar.jsx";
 import AdminFooter from "components/Footers/AdminFooter.jsx";
 import Sidebar from "components/Sidebar/Sidebar.jsx";
 import routes from "routes.js";
+//redux
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+const mapStateToProps = state => ({ ...state });
 class Admin extends React.Component {
-    componentDidUpdate(e) {
-        document.documentElement.scrollTop = 0;
-        document.scrollingElement.scrollTop = 0;
-        this.refs.mainContent.scrollTop = 0;
-    }
     getRoutes = routes => {
         return routes.map((prop, key) => {
             if (prop.layout === "/admin") {
@@ -41,10 +40,13 @@ class Admin extends React.Component {
         return "Brand";
     };
     render() {
+        if (!this.props.authState.loggedIn) {
+            return <Redirect to="/auth/login" />;
+        }
+
         return (
             <>
                 <Sidebar
-                    {...this.props}
                     routes={routes}
                     logo={{
                         innerLink: "/admin/index",
@@ -54,7 +56,6 @@ class Admin extends React.Component {
                 />
                 <div className="main-content" ref="mainContent">
                     <AdminNavbar
-                        {...this.props}
                         brandText={this.getBrandText(
                             this.props.location.pathname
                         )}
@@ -69,4 +70,7 @@ class Admin extends React.Component {
     }
 }
 
-export default Admin;
+export default connect(
+    mapStateToProps,
+    {}
+)(Admin);

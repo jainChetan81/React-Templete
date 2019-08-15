@@ -7,17 +7,11 @@ import { PropTypes } from "prop-types";
 // reactstrap components
 import {
     Collapse,
-    DropdownMenu,
-    DropdownItem,
-    UncontrolledDropdown,
-    DropdownToggle,
-    FormGroup,
     Form,
     Input,
     InputGroupAddon,
     InputGroupText,
     InputGroup,
-    Media,
     NavbarBrand,
     Navbar,
     NavItem,
@@ -49,12 +43,14 @@ class Sidebar extends React.Component {
         this.setState({
             collapseOpen: !this.state.collapseOpen
         });
+        console.log(this.state.collapseOpen);
     };
     // closes the collapse
     closeCollapse = () => {
         this.setState({
             collapseOpen: false
         });
+        console.log(this.state.collapseOpen);
     };
     // creates the links that appear in the left menu / Sidebar
     createLinks = routes => {
@@ -77,6 +73,7 @@ class Sidebar extends React.Component {
         const { routes, logo } = this.props;
         let navbarBrandProps;
         if (logo && logo.innerLink) {
+            //* this right here provides link to the logo through spread operator
             navbarBrandProps = {
                 to: logo.innerLink,
                 tag: Link
@@ -126,6 +123,7 @@ class Sidebar extends React.Component {
                                 </Col>
                             </Row>
                         </div>
+                        {/* //*collapse end /}
                         {/* Form */}
                         <Form className="mt-4 mb-3">
                             <InputGroup className="input-group-rounded input-group-merge">
