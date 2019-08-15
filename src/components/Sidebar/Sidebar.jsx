@@ -6,11 +6,6 @@ import { PropTypes } from "prop-types";
 
 // reactstrap components
 import {
-    Button,
-    Card,
-    CardHeader,
-    CardBody,
-    CardTitle,
     Collapse,
     DropdownMenu,
     DropdownItem,
@@ -28,8 +23,6 @@ import {
     NavItem,
     NavLink,
     Nav,
-    Progress,
-    Table,
     Container,
     Row,
     Col
@@ -81,7 +74,7 @@ class Sidebar extends React.Component {
         });
     };
     render() {
-        const { bgColor, routes, logo } = this.props;
+        const { routes, logo } = this.props;
         let navbarBrandProps;
         if (logo && logo.innerLink) {
             navbarBrandProps = {
@@ -190,27 +183,8 @@ class Sidebar extends React.Component {
                     {/* Collapse */}
                     <Collapse navbar isOpen={this.state.collapseOpen}>
                         {/* Collapse header */}
-                        <div className="navbar-collapse-header d-md-none">
+                        <div className="navbar-collapse-header">
                             <Row>
-                                {logo ? (
-                                    <Col className="collapse-brand" xs="6">
-                                        {logo.innerLink ? (
-                                            <Link to={logo.innerLink}>
-                                                <img
-                                                    alt={logo.imgAlt}
-                                                    src={logo.imgSrc}
-                                                />
-                                            </Link>
-                                        ) : (
-                                            <a href={logo.outterLink}>
-                                                <img
-                                                    alt={logo.imgAlt}
-                                                    src={logo.imgSrc}
-                                                />
-                                            </a>
-                                        )}
-                                    </Col>
-                                ) : null}
                                 <Col className="collapse-close" xs="6">
                                     <button
                                         className="navbar-toggler"
@@ -223,7 +197,7 @@ class Sidebar extends React.Component {
                             </Row>
                         </div>
                         {/* Form */}
-                        <Form className="mt-4 mb-3 d-md-none">
+                        <Form className="mt-4 mb-3">
                             <InputGroup className="input-group-rounded input-group-merge">
                                 <Input
                                     aria-label="Search"
@@ -240,33 +214,7 @@ class Sidebar extends React.Component {
                         </Form>
                         {/* Navigation */}
                         <Nav navbar>{this.createLinks(routes)}</Nav>
-                        {/* Divider */}
-                        <hr className="my-3" />
-                        {/* Heading */}
-                        <h6 className="navbar-heading text-muted">
-                            Documentation
-                        </h6>
-                        {/* Navigation */}
-                        <Nav className="mb-md-3" navbar>
-                            <NavItem>
-                                <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/documentation/overview?ref=adr-admin-sidebar">
-                                    <i className="ni ni-spaceship" />
-                                    Getting started
-                                </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/documentation/colors?ref=adr-admin-sidebar">
-                                    <i className="ni ni-palette" />
-                                    Foundation
-                                </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/documentation/alerts?ref=adr-admin-sidebar">
-                                    <i className="ni ni-ui-04" />
-                                    Components
-                                </NavLink>
-                            </NavItem>
-                        </Nav>
+                        {/* //*navbar links in sidebar */}
                     </Collapse>
                 </Container>
             </Navbar>
