@@ -40,10 +40,6 @@ class Admin extends React.Component {
         return "Brand";
     };
     render() {
-        if (!this.props.authState.loggedIn) {
-            return <Redirect to="/auth/login" />;
-        }
-
         return (
             <>
                 <Sidebar
@@ -70,7 +66,4 @@ class Admin extends React.Component {
     }
 }
 
-export default connect(
-    mapStateToProps,
-    {}
-)(Admin);
+export default Admin;

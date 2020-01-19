@@ -11,16 +11,13 @@ import "assets/scss/argon-dashboard-react.scss";
 import AdminLayout from "layouts/Admin.jsx";
 
 ReactDOM.render(
-    <Provider store={configureStore()}>
-        <BrowserRouter>
-            <Switch>
-                <Route
-                    path="/admin"
-                    render={props => <AdminLayout {...props} />}
-                />
-                <Redirect from="/" to="/admin/index" />
-            </Switch>
-        </BrowserRouter>
-    </Provider>,
+    // <Provider store={configureStore()}>
+    <BrowserRouter>
+        <Switch>
+            <Route path="/admin" render={props => <AdminLayout {...props} />} />
+            <Redirect from="/" to="/admin/index" />
+        </Switch>
+    </BrowserRouter>,
+    // </Provider>
     document.getElementById("root")
 );
